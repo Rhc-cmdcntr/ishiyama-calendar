@@ -1,0 +1,543 @@
+<title>Ishiyama-dera Ops Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --paper:#f1f0ea; --surface:#ffffff; --surface-2:#faf9f4;
+    --ink:#20232e; --ink-soft:#585d6d; --ink-faint:#8a8e9c;
+    --line:#e4e2d9; --line-soft:#eeece4;
+    --accent:#3a4795; --accent-soft:#e7e8f4;
+    --block:#b23524; --block-bg:#f6e5e1;
+    --heavy:#a5741a; --heavy-bg:#f6ecd7;
+    --note:#4f7565; --note-bg:#e6efe9;
+    --shadow:0 1px 2px rgba(30,32,45,.04),0 6px 20px rgba(30,32,45,.05);
+    --radius:14px;
+    --serif:"Shippori Mincho",Georgia,"Yu Mincho",serif;
+    --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#111219; --surface:#191b23; --surface-2:#1f222c;
+      --ink:#eceadf; --ink-soft:#a2a6b6; --ink-faint:#767b8c;
+      --line:#2b2e3a; --line-soft:#23262f;
+      --accent:#8e99dd; --accent-soft:#242844;
+      --block:#e07a6c; --block-bg:#33211f;
+      --heavy:#d6a94a; --heavy-bg:#2f2917;
+      --note:#82ab96; --note-bg:#1c2822;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#111219; --surface:#191b23; --surface-2:#1f222c;
+    --ink:#eceadf; --ink-soft:#a2a6b6; --ink-faint:#767b8c;
+    --line:#2b2e3a; --line-soft:#23262f;
+    --accent:#8e99dd; --accent-soft:#242844;
+    --block:#e07a6c; --block-bg:#33211f;
+    --heavy:#d6a94a; --heavy-bg:#2f2917;
+    --note:#82ab96; --note-bg:#1c2822;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.28);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:var(--sans); line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px 96px}
+
+  /* ---- Header ---- */
+  header{padding:52px 0 26px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);opacity:.6}
+  h1{
+    font-family:var(--serif);font-weight:700;letter-spacing:-.01em;
+    font-size:clamp(2rem,5vw,3.1rem);line-height:1.05;margin:14px 0 6px;
+    text-wrap:balance;
+  }
+  h1 .jp{display:block;font-size:.55em;color:var(--ink-soft);font-weight:500;margin-top:6px;letter-spacing:.02em}
+  .lede{color:var(--ink-soft);max-width:60ch;font-size:1.02rem}
+  .meta{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 22px;
+    font-size:.82rem;color:var(--ink-faint);
+  }
+  .meta b{color:var(--ink-soft);font-weight:700}
+  .stamp{
+    margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;
+    font-size:.78rem;color:var(--ink-soft);
+    background:var(--accent-soft);border:1px solid var(--line);
+    border-radius:999px;padding:8px 15px;width:fit-content;max-width:100%;
+  }
+  .stamp b{color:var(--ink);font-weight:700}
+  .stamp .sep{color:var(--ink-faint)}
+  .stamp .auto{color:var(--accent);font-weight:700;letter-spacing:.02em}
+  .stamp .pulse{
+    width:8px;height:8px;border-radius:50%;background:var(--note);flex:none;
+    box-shadow:0 0 0 0 var(--note);animation:pulse 2.6s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--note) 55%,transparent)}
+    70%{box-shadow:0 0 0 7px transparent}
+    100%{box-shadow:0 0 0 0 transparent}
+  }
+
+  /* ---- Stat chips ---- */
+  .stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .stat{
+    flex:1 1 150px;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);
+    position:relative;overflow:hidden;
+  }
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+  .stat .n{font-size:1.9rem;font-weight:700;font-family:var(--serif);line-height:1;font-variant-numeric:tabular-nums}
+  .stat .lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-top:8px}
+  .stat .sub{font-size:.78rem;color:var(--ink-soft);margin-top:3px}
+  .stat.block{--c:var(--block)} .stat.heavy{--c:var(--heavy)} .stat.note{--c:var(--note)}
+  .stat.total{--c:var(--accent)}
+
+  /* ---- Toolbar ---- */
+  .toolbar{
+    position:sticky;top:0;z-index:20;background:var(--paper);
+    padding:16px 0 14px;margin-top:8px;
+    border-bottom:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  }
+  .search{
+    flex:1 1 220px;min-width:180px;display:flex;align-items:center;gap:8px;
+    background:var(--surface);border:1px solid var(--line);border-radius:999px;
+    padding:9px 15px;box-shadow:var(--shadow);
+  }
+  .search svg{width:15px;height:15px;stroke:var(--ink-faint);flex:none}
+  .search input{
+    border:0;background:none;outline:none;width:100%;color:var(--ink);
+    font-family:var(--sans);font-size:.92rem;
+  }
+  .search input::placeholder{color:var(--ink-faint)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{
+    font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.02em;
+    padding:8px 14px;border-radius:999px;cursor:pointer;
+    background:var(--surface);color:var(--ink-soft);
+    border:1px solid var(--line);transition:.16s ease;white-space:nowrap;
+  }
+  .chip:hover{border-color:var(--ink-faint);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .chip.t-block[aria-pressed="true"]{background:var(--block);border-color:var(--block);color:#fff}
+  .chip.t-heavy[aria-pressed="true"]{background:var(--heavy);border-color:var(--heavy);color:#fff}
+  .chip.t-note[aria-pressed="true"]{background:var(--note);border-color:var(--note);color:#fff}
+  .chip .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:middle;background:var(--d)}
+  .chip[aria-pressed="true"] .dot{background:rgba(255,255,255,.85)}
+  .chip.copy{
+    margin-left:auto;display:inline-flex;align-items:center;gap:7px;
+    background:var(--accent);color:#fff;border-color:var(--accent);
+  }
+  .chip.copy svg{width:14px;height:14px;stroke:#fff;flex:none}
+  .chip.copy:hover{color:#fff;filter:brightness(1.06)}
+  .chip.copy.done{background:var(--note);border-color:var(--note)}
+  .chip.copy.done svg{stroke:#fff}
+
+  /* ---- Month + events ---- */
+  .month{margin-top:38px}
+  .month-hd{
+    display:flex;align-items:baseline;gap:14px;
+    padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid var(--line);
+    position:sticky;top:63px;background:var(--paper);z-index:10;padding-top:8px;
+  }
+  .month-hd h2{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.01em}
+  .month-hd .yr{font-size:.8rem;color:var(--ink-faint);font-weight:700;letter-spacing:.12em}
+  .month-hd .cnt{margin-left:auto;font-size:.78rem;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+
+  ul.events{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  li.ev{
+    display:grid;grid-template-columns:96px 1fr auto;gap:18px;align-items:start;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px 16px 20px;box-shadow:var(--shadow);position:relative;
+    border-left:4px solid var(--tc);transition:transform .12s ease,box-shadow .12s ease;
+  }
+  li.ev:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(30,32,45,.09),0 12px 30px rgba(30,32,45,.07)}
+  li.ev.block{--tc:var(--block)} li.ev.heavy{--tc:var(--heavy)} li.ev.note{--tc:var(--note)}
+
+  .ev .date{font-variant-numeric:tabular-nums}
+  .ev .date .d{font-family:var(--serif);font-size:1.28rem;font-weight:600;line-height:1.05;color:var(--ink)}
+  .ev .date .dow{font-size:.74rem;color:var(--ink-faint);font-weight:700;letter-spacing:.06em;margin-top:2px}
+  .ev .date .range{font-size:.72rem;color:var(--ink-faint);margin-top:3px}
+
+  .ev .body .jp{font-family:var(--serif);font-size:1.12rem;font-weight:600;letter-spacing:.01em;line-height:1.3}
+  .ev .body .en{color:var(--ink-soft);font-size:.9rem;margin-top:3px}
+  .ev .body .nt{color:var(--ink-faint);font-size:.82rem;margin-top:6px;line-height:1.45}
+  .ev .body a.src{
+    display:inline-flex;align-items:center;gap:5px;margin-top:9px;
+    font-size:.76rem;font-weight:700;color:var(--accent);text-decoration:none;
+    letter-spacing:.02em;
+  }
+  .ev .body a.src:hover{text-decoration:underline}
+  .ev .body a.src svg{width:12px;height:12px;stroke:var(--accent);flex:none}
+
+  .ev .tags{display:flex;flex-direction:column;align-items:flex-end;gap:7px;text-align:right}
+  .pill{
+    font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;white-space:nowrap;
+  }
+  .pill.block{background:var(--block-bg);color:var(--block)}
+  .pill.heavy{background:var(--heavy-bg);color:var(--heavy)}
+  .pill.note{background:var(--note-bg);color:var(--note)}
+  .pill.status{background:transparent;border:1px solid var(--line);color:var(--ink-faint);letter-spacing:.06em}
+  .pill.status.proj{border-style:dashed}
+
+  .empty{display:none;text-align:center;padding:70px 20px;color:var(--ink-faint)}
+  .empty.show{display:block}
+  .empty .big{font-family:var(--serif);font-size:1.3rem;color:var(--ink-soft);margin-bottom:6px}
+
+  /* ---- Footer notes ---- */
+  footer{
+    margin-top:52px;padding:28px 26px;background:var(--surface-2);
+    border:1px solid var(--line);border-radius:var(--radius);
+  }
+  footer h3{font-family:var(--serif);font-size:1.05rem;font-weight:600;margin-bottom:12px}
+  footer ul{margin:0;padding-left:1.05em;color:var(--ink-soft);font-size:.88rem;display:flex;flex-direction:column;gap:8px}
+  footer li::marker{color:var(--accent)}
+  footer .jp{font-family:var(--serif);color:var(--ink)}
+  .credit{margin-top:16px;font-size:.76rem;color:var(--ink-faint)}
+  .disclaimer{
+    margin-top:22px;padding:18px 20px;border:1px dashed var(--line);
+    border-left:4px solid var(--accent);border-radius:12px;background:var(--surface);
+  }
+  .disclaimer .dtag{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:10px;
+  }
+  .disclaimer .dtag svg{width:13px;height:13px;stroke:var(--accent);flex:none}
+  .disclaimer p{font-size:.84rem;color:var(--ink-soft);line-height:1.55}
+  .disclaimer p+p{margin-top:9px}
+  .disclaimer b{color:var(--ink);font-weight:700}
+
+  /* theme toggle */
+  .toggle{
+    position:fixed;right:16px;bottom:16px;z-index:40;
+    width:42px;height:42px;border-radius:50%;border:1px solid var(--line);
+    background:var(--surface);color:var(--ink-soft);cursor:pointer;
+    box-shadow:var(--shadow);font-size:16px;display:flex;align-items:center;justify-content:center;
+  }
+  .toggle:hover{color:var(--ink);border-color:var(--ink-faint)}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  @media (max-width:620px){
+    li.ev{grid-template-columns:70px 1fr;gap:12px}
+    .ev .tags{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;margin-top:2px}
+    .month-hd{top:59px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Congestion Watch · 石山寺</div>
+    <h1>Ishiyama-dera Ops Calendar
+      <span class="jp">大津・石山寺 行事予定と混雑カレンダー</span>
+    </h1>
+    <p class="lede">Every dated observance, exhibition and festival for the next six months, tiered by operational impact, so the days that need planning stand out from the days that don't.</p>
+    <div class="meta">
+      <span><b>Window</b> <span id="mWindow">22 Aug 2026 → end Feb 2027</span></span>
+      <span><b>Source</b> ishiyamadera.or.jp</span>
+    </div>
+    <div class="stamp">
+      <span class="pulse" aria-hidden="true"></span>
+      <span><b>Last updated</b> <span id="mUpdated">22 Aug 2026</span></span>
+      <span class="sep">·</span>
+      <span><b>Next refresh</b> <span id="mNext">Mon 24 Aug 2026, 07:00 JST</span></span>
+      <span class="sep">·</span>
+      <span class="auto" id="mLive">Auto-refreshes every Monday</span>
+    </div>
+
+    <div class="stats" id="stats">
+      <div class="stat block"><div class="n" data-c="block">0</div><div class="lbl">Block</div><div class="sub">Avoid: closure / major festival / multi-day 法要</div></div>
+      <div class="stat heavy"><div class="n" data-c="heavy">0</div><div class="lbl">Heavy</div><div class="sub">Congestion: light-ups, markets, peak bloom</div></div>
+      <div class="stat note"><div class="n" data-c="note">0</div><div class="lbl">Note</div><div class="sub">No operational impact</div></div>
+      <div class="stat total"><div class="n" data-c="total">0</div><div class="lbl">Events</div><div class="sub"><span data-c="confirmed">0</span> confirmed · <span data-c="projected">0</span> projected</div></div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="search" placeholder="Search events, e.g. もみじ, tea, festival…" aria-label="Search events">
+    </label>
+    <div class="chips" id="tierChips" role="group" aria-label="Filter by tier">
+      <button class="chip t-block" data-tier="block" aria-pressed="true"><span class="dot" style="--d:var(--block)"></span>Block</button>
+      <button class="chip t-heavy" data-tier="heavy" aria-pressed="true"><span class="dot" style="--d:var(--heavy)"></span>Heavy</button>
+      <button class="chip t-note" data-tier="note" aria-pressed="true"><span class="dot" style="--d:var(--note)"></span>Note</button>
+    </div>
+    <div class="chips" id="statusChips" role="group" aria-label="Filter by status">
+      <button class="chip" data-status="confirmed" aria-pressed="true">Confirmed</button>
+      <button class="chip" data-status="projected" aria-pressed="true">Projected</button>
+    </div>
+    <button class="chip copy" id="copyBtn" aria-label="Copy visible events as text for email">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+      <span id="copyLabel">Copy for email</span>
+    </button>
+  </div>
+
+  <main id="list"></main>
+  <div class="empty" id="empty"><div class="big">No matching events</div>Adjust the filters or clear your search.</div>
+
+  <footer>
+    <h3>Reading the projections</h3>
+    <ul>
+      <li><b>Confirmed</b> items are announced for 2026 on the temple site. <b>Projected</b> items are placed from 2024-2025 recurrence and will shift a few days once each month's <span class="jp">行事予定</span> post appears (usually on the 1st).</li>
+      <li>The <span class="jp">秋月祭</span> Autumn Moon Festival (Sep 25-26) is tied to the mid-autumn moon and runs on special evening admission. It is the season's single highest-impact date.</li>
+      <li>The autumn light-up <span class="jp">あたら夜もみじ</span> and peak <span class="jp">紅葉</span> (~Nov 13-30) are the busiest stretch of the six months. 2025 ran Nov 14-30; re-check the exact 2026 dates in late October.</li>
+      <li><span class="jp">紫式部法要</span> tracks the mid-autumn moon, so in 2026 it likely coincides with the festival on Sep 25 rather than falling in early October as it did in 2025.</li>
+      <li><span class="jp">除夜の鐘</span> (Dec 31) and <span class="jp">初詣</span> (Jan 1-3) are standard year-end / New-Year crowds; exact timings not yet posted.</li>
+    </ul>
+    <div class="credit">Recurring monthly deity days (<span class="jp">弘法大師 21日 · 毘沙門会 26日 · 不動 28日</span>) are grouped as a single Note row per month. Refresh weekly.</div>
+
+    <div class="disclaimer">
+      <div class="dtag">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        Auto-added to every "Copy for email"
+      </div>
+      <p><b>Please note:</b> RHC and Ishiyama-dera reserve the right to change any blackout (BLOCK) or heavy-congestion (HEAVY) dates. Dates not shown here may also change, and any date, even one not currently marked as a blackout, is subject to change at any time. Projected dates are placed from prior-year patterns and are confirmed only once the temple posts each month's schedule.</p>
+      <p>Please treat this list as a reference only, and contact us to confirm before relying on any date. As a reminder, Ishiyama-dera is a living, practicing temple, so we kindly ask that it always be approached with respect.</p>
+    </div>
+  </footer>
+</div>
+
+<button class="toggle" id="toggle" aria-label="Toggle light or dark theme">◐</button>
+
+<script>
+/* =====================================================================
+   LIVE DATA SOURCE
+   ---------------------------------------------------------------------
+   The page ships with a built-in copy of the data below, so it always
+   works. On load it also reads the file "data.json" sitting next to this
+   page. The weekly refresh updates that data.json, so the page stays
+   current with no changes to this file.
+   ===================================================================== */
+const DATA_URL = "data.json";
+
+let META = {
+  updated: "22 Aug 2026",
+  windowLabel: "22 Aug 2026 → end Feb 2027",
+  nextRefresh: "Mon 24 Aug 2026, 07:00 JST"
+};
+
+let EVENTS = [
+  {m:"Aug 2026", d:"23", dow:"Sun", iso:"2026-08-23", jp:"夏安居／涼し夏 最終日", en:"Summer program (Natsu-ango / Suzushi-ge) final day", tier:"heavy", status:"confirmed", url:"https://www.ishiyamadera.or.jp/info/news/12870"},
+  {m:"Aug 2026", d:"26", dow:"Tue", iso:"2026-08-26", jp:"毘沙門会法要", en:"Bishamon-ten monthly service", tier:"note", status:"confirmed", url:"https://www.ishiyamadera.or.jp/info/news/12870"},
+  {m:"Aug 2026", d:"28", dow:"Fri", iso:"2026-08-28", jp:"お不動さまの日", en:"Fudō-myōō monthly day", tier:"note", status:"confirmed", url:"https://www.ishiyamadera.or.jp/info/news/12870"},
+
+  {m:"Sep 2026", d:"1", dow:"Tue", range:"Sep 1 - Nov 30", iso:"2026-09-01", jp:"秋季 石山寺と紫式部展『伝わる寺宝 受け継ぐ心』", en:"Autumn exhibition: Ishiyama-dera & Murasaki Shikibu", tier:"heavy", status:"confirmed", url:"https://www.ishiyamadera.or.jp/guide/event/shikibuten/shikibuten-2026-autumn", nt:"Now officially announced for 2026 (was projected last week)."},
+  {m:"Sep 2026", d:"1", dow:"Tue", range:"Sep 1 - 27", iso:"2026-09-01", jp:"第七回 石山寺俳句大賞", en:"7th Ishiyama-dera Haiku Award (remote submission)", tier:"note", status:"confirmed", url:"https://www.ishiyamadera.or.jp/guide/event/haikutaisyo", nt:"Postal/online submission (no on-site impact)."},
+  {m:"Sep 2026", d:"13", dow:"Sun", iso:"2026-09-13", jp:"写経会", en:"Sutra-copying session (2nd Sunday)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Sep 2026", d:"18", dow:"Fri", iso:"2026-09-18", jp:"観音さまの日・門前市", en:"Kannon day / temple-gate market (18th)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Sep 2026", d:"25", dow:"Fri", range:"Sep 25 - 26", iso:"2026-09-25", jp:"石山寺 秋月祭", en:"Autumn Moon Festival (flagship, evening special admission)", tier:"block", status:"confirmed", url:"https://www.ishiyamadera.or.jp/guide/event/shugetsusai", nt:"Tied to the mid-autumn moon (中秋の名月, Sep 25 2026). Peak-impact weekend."},
+  {m:"Sep 2026", d:"25", dow:"Fri", iso:"2026-09-25", jp:"紫式部法要", en:"Murasaki Shikibu memorial service", tier:"note", status:"projected", url:"https://www.ishiyamadera.or.jp/info/blog/12424", nt:"Tracks the mid-autumn moon; likely coincides with 秋月祭 in 2026 (was Oct 6 in 2025)."},
+
+  {m:"Oct 2026", d:"11", dow:"Sun", iso:"2026-10-11", jp:"写経会", en:"Sutra-copying session (2nd Sunday)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Oct 2026", d:"18", dow:"Sun", iso:"2026-10-18", jp:"観音さまの日・門前市", en:"Kannon day / temple-gate market (18th)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+
+  {m:"Nov 2026", d:"8", dow:"Sun", iso:"2026-11-08", jp:"写経会", en:"Sutra-copying session (2nd Sunday)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Nov 2026", d:"13", dow:"Fri", range:"~Nov 13 - 30", iso:"2026-11-13", jp:"石山寺あたら夜もみじ（ライトアップ）", en:"Autumn-leaves illumination, 17:30-21:00", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12436", nt:"Highest-congestion window of the six months. 2025 ran Nov 14-30; confirm 2026 in late Oct."},
+  {m:"Nov 2026", d:"18", dow:"Wed", iso:"2026-11-18", jp:"観音さまの日・門前市", en:"Kannon day / temple-gate market (18th)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Nov 2026", d:"18", dow:"Wed", range:"~Nov 18 - 30", iso:"2026-11-18", jp:"紅葉 見頃（ピーク）", en:"Autumn-leaves peak bloom", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-flower/info-flower-autumn/12527"},
+  {m:"Nov 2026", d:"21", dow:"Sat", range:"~Nov 21 - 23", iso:"2026-11-21", jp:"石山寺 紅葉の茶会", en:"Autumn-leaves tea ceremony", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12436", nt:"2025 held Nov 23-24, reservation-based sessions."},
+
+  {m:"Dec 2026", d:"1", dow:"Tue", iso:"2026-12-01", jp:"お火焚き", en:"Ohitaki fire ritual (38 guardian shrines)", tier:"note", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12541"},
+  {m:"Dec 2026", d:"6", dow:"Sun", range:"Dec 6 - 8", iso:"2026-12-06", jp:"仏名会", en:"Butsumyō-e (multi-day Buddha-name recitation service)", tier:"block", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12541"},
+  {m:"Dec 2026", d:"13", dow:"Sun", iso:"2026-12-13", jp:"写経会", en:"Sutra-copying session (2nd Sunday)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Dec 2026", d:"18", dow:"Fri", iso:"2026-12-18", jp:"観音さまの日・門前市", en:"Kannon day / temple-gate market (18th)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Dec 2026", d:"31", dow:"Thu", iso:"2026-12-31", jp:"除夜の鐘", en:"New Year's Eve bell (late-night crowds)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12541"},
+
+  {m:"Jan 2027", d:"1", dow:"Fri", range:"Jan 1 - 3", iso:"2027-01-01", jp:"初詣", en:"New Year temple visits (peak crowds)", tier:"block", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12579"},
+  {m:"Jan 2027", d:"4", dow:"Mon", iso:"2027-01-04", jp:"鏡開き", en:"Kagami-biraki (mirror-cake opening)", tier:"note", status:"projected", url:"https://www.ishiyamadera.or.jp/info/blog/12637"},
+  {m:"Jan 2027", d:"10", dow:"Sun", iso:"2027-01-10", jp:"写経会", en:"Sutra-copying session (2nd Sunday)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Jan 2027", d:"15", dow:"Fri", iso:"2027-01-15", jp:"どんど焼き", en:"Dondo-yaki (New Year fire ritual)", tier:"note", status:"projected", url:"https://www.ishiyamadera.or.jp/info/blog/12637"},
+  {m:"Jan 2027", d:"17", dow:"Sun", range:"mid-Jan → mid-May", iso:"2027-01-17", jp:"内陣特別拝観", en:"Inner-sanctuary special viewing begins", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12635", nt:"2026 ran Jan 17-May 17."},
+  {m:"Jan 2027", d:"18", dow:"Mon", iso:"2027-01-18", jp:"観音さまの日・門前市", en:"Kannon day / temple-gate market (18th)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+
+  {m:"Feb 2027", d:"3", dow:"Wed", iso:"2027-02-03", jp:"星祭大祈祷会・豆まき", en:"Star Festival grand prayer service & bean-throwing", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/news/12667"},
+  {m:"Feb 2027", d:"14", dow:"Sun", iso:"2027-02-14", jp:"写経会", en:"Sutra-copying session (2nd Sunday)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Feb 2027", d:"18", dow:"Thu", range:"Feb 18 → spring", iso:"2027-02-18", jp:"梅つくし（梅園見頃はじまり）", en:"Plum-garden viewing begins", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/special-event"},
+  {m:"Feb 2027", d:"18", dow:"Thu", iso:"2027-02-18", jp:"観音さまの日・門前市", en:"Kannon day / temple-gate market (18th)", tier:"heavy", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event"},
+  {m:"Feb 2027", d:"-", dow:"", range:"21 · 26 · 28", iso:"2027-02-21", jp:"弘法大師・毘沙門会・不動 月例", en:"Recurring monthly deity observances", tier:"note", status:"projected", url:"https://www.ishiyamadera.or.jp/info/info-event/regular-event", nt:"Represents the devotional monthly days across the window (no operational impact)."},
+];
+
+const state = {
+  tiers:new Set(["block","heavy","note"]),
+  statuses:new Set(["confirmed","projected"]),
+  q:""
+};
+const TIER_LABEL={block:"Block",heavy:"Heavy",note:"Note"};
+const linkIcon='<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>';
+
+function computeStats(){
+  const c={block:0,heavy:0,note:0,total:EVENTS.length,confirmed:0,projected:0};
+  EVENTS.forEach(e=>{c[e.tier]++;c[e.status]++});
+  document.querySelectorAll('[data-c]').forEach(el=>{el.textContent=c[el.dataset.c]});
+}
+
+function filtered(){
+  const q=state.q.trim().toLowerCase();
+  return EVENTS.filter(e=>
+    state.tiers.has(e.tier) && state.statuses.has(e.status) &&
+    (!q || (e.jp+e.en+(e.nt||'')).toLowerCase().includes(q))
+  );
+}
+
+function render(){
+  const list=document.getElementById('list');
+  list.innerHTML='';
+  const shown=filtered();
+  document.getElementById('empty').classList.toggle('show',shown.length===0);
+
+  const months=[...new Set(shown.map(e=>e.m))];
+  months.forEach(m=>{
+    const group=shown.filter(e=>e.m===m);
+    const sec=document.createElement('section');
+    sec.className='month';
+    const [mon,yr]=m.split(' ');
+    sec.innerHTML=`<div class="month-hd"><h2>${mon}</h2><span class="yr">${yr}</span><span class="cnt">${group.length} event${group.length>1?'s':''}</span></div>`;
+    const ul=document.createElement('ul');
+    ul.className='events';
+    group.forEach(e=>{
+      const li=document.createElement('li');
+      li.className='ev '+e.tier;
+      li.innerHTML=`
+        <div class="date">
+          <div class="d">${e.d}</div>
+          ${e.dow?`<div class="dow">${e.dow}</div>`:''}
+          ${e.range?`<div class="range">${e.range}</div>`:''}
+        </div>
+        <div class="body">
+          <div class="jp">${e.jp}</div>
+          <div class="en">${e.en}</div>
+          ${e.nt?`<div class="nt">${e.nt}</div>`:''}
+          <a class="src" href="${e.url}" target="_blank" rel="noopener">ishiyamadera.or.jp ${linkIcon}</a>
+        </div>
+        <div class="tags">
+          <span class="pill ${e.tier}">${TIER_LABEL[e.tier]}</span>
+          <span class="pill status ${e.status==='projected'?'proj':''}">${e.status==='confirmed'?'Confirmed':'Projected'}</span>
+        </div>`;
+      ul.appendChild(li);
+    });
+    sec.appendChild(ul);
+    list.appendChild(sec);
+  });
+}
+
+document.getElementById('tierChips').addEventListener('click',ev=>{
+  const b=ev.target.closest('button');if(!b)return;
+  const t=b.dataset.tier, on=b.getAttribute('aria-pressed')==='true';
+  b.setAttribute('aria-pressed',String(!on));
+  on?state.tiers.delete(t):state.tiers.add(t);
+  render();
+});
+document.getElementById('statusChips').addEventListener('click',ev=>{
+  const b=ev.target.closest('button');if(!b)return;
+  const s=b.dataset.status, on=b.getAttribute('aria-pressed')==='true';
+  b.setAttribute('aria-pressed',String(!on));
+  on?state.statuses.delete(s):state.statuses.add(s);
+  render();
+});
+document.getElementById('search').addEventListener('input',e=>{state.q=e.target.value;render();});
+
+// ---- Copy for email ----
+function buildEmailText(){
+  const rows=filtered();
+  const TIER={block:"BLOCK",heavy:"HEAVY",note:"NOTE"};
+  const L=[];
+  L.push("Ishiyama-dera (石山寺): Operational Event Calendar");
+  L.push("Window: " + META.windowLabel + "  |  Updated: " + META.updated);
+  L.push("Tiers: BLOCK = avoid (closure/major festival/multi-day service) · HEAVY = congestion · NOTE = no operational impact");
+  L.push("Source: ishiyamadera.or.jp");
+  L.push("");
+  let curMonth="";
+  rows.forEach(e=>{
+    if(e.m!==curMonth){curMonth=e.m;L.push("── "+curMonth+" ──");}
+    const when=e.range?e.range:(e.d+(e.dow?" ("+e.dow+")":""));
+    L.push("  "+when+"  |  "+e.jp+"  ("+e.en+")  |  "+TIER[e.tier]+"  |  "+(e.status==="confirmed"?"Confirmed":"Projected"));
+    if(e.nt) L.push("        ↳ "+e.nt);
+  });
+  L.push("");
+  L.push("------------------------------");
+  L.push("Please note:");
+  L.push("RHC and Ishiyama-dera reserve the right to change any blackout (BLOCK) or heavy-congestion (HEAVY) dates. Dates not shown here may also change, and any date, even one not currently marked as a blackout, is subject to change at any time. Projected dates are placed from prior-year patterns and are confirmed only once the temple posts each month's schedule.");
+  L.push("");
+  L.push("Please treat this list as a reference only, and contact us to confirm before relying on any date. As a reminder, Ishiyama-dera is a living, practicing temple, so we kindly ask that it always be approached with respect.");
+  return L.join("\n");
+}
+
+const copyBtn=document.getElementById('copyBtn'), copyLabel=document.getElementById('copyLabel');
+let copyTimer;
+copyBtn.addEventListener('click',async()=>{
+  const text=buildEmailText();
+  const n=filtered().length;
+  let ok=false;
+  try{ await navigator.clipboard.writeText(text); ok=true; }
+  catch(err){
+    try{
+      const ta=document.createElement('textarea');
+      ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      ok=document.execCommand('copy'); document.body.removeChild(ta);
+    }catch(e2){ ok=false; }
+  }
+  clearTimeout(copyTimer);
+  copyBtn.classList.toggle('done',ok);
+  copyLabel.textContent = ok ? ("Copied "+n+" event"+(n===1?"":"s")+"!") : "Press Ctrl/⌘+C";
+  copyTimer=setTimeout(()=>{ copyBtn.classList.remove('done'); copyLabel.textContent="Copy for email"; },2400);
+});
+
+// theme toggle (per-viewer convenience)
+const root=document.documentElement, tg=document.getElementById('toggle');
+try{const saved=localStorage.getItem('isy-theme');if(saved)root.setAttribute('data-theme',saved);}catch(e){}
+tg.addEventListener('click',()=>{
+  const cur=root.getAttribute('data-theme');
+  const next=cur==='dark'?'light':(cur==='light'?'dark':(matchMedia('(prefers-color-scheme:dark)').matches?'light':'dark'));
+  root.setAttribute('data-theme',next);
+  try{localStorage.setItem('isy-theme',next);}catch(e){}
+});
+
+function applyMeta(){
+  const set=(id,val)=>{const el=document.getElementById(id);if(el&&val)el.textContent=val;};
+  set('mWindow',META.windowLabel);
+  set('mUpdated',META.updated);
+  set('mNext',META.nextRefresh);
+}
+
+function refreshAll(){ computeStats(); applyMeta(); render(); }
+
+// Try to load live data from Google Drive. Falls back silently to the
+// built-in copy if no key is set, the fetch fails, or the data is invalid.
+async function loadData(){
+  const live=document.getElementById('mLive');
+  if(!DATA_URL){ if(live) live.textContent="Auto-refreshes every Monday"; return; }
+  try{
+    const res=await fetch(DATA_URL,{cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const data=await res.json();
+    if(!Array.isArray(data.events)||!data.events.length) throw new Error("no events");
+    EVENTS=data.events;
+    META={
+      updated:data.updated||META.updated,
+      windowLabel:data.windowLabel||META.windowLabel,
+      nextRefresh:data.nextRefresh||META.nextRefresh
+    };
+    refreshAll();
+    if(live) live.textContent="Live from Drive · auto-refreshes every Monday";
+  }catch(err){
+    if(live) live.textContent="Showing built-in copy";
+    console.warn("Live data unavailable, using built-in copy:",err);
+  }
+}
+
+refreshAll();
+loadData();
+</script>
