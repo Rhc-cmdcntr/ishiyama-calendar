@@ -8,12 +8,13 @@
       "d": "1",
       "dow": "Tue",
       "iso": "2026-09-01",
-      "jp": "秋季 石山寺と紫式部展『伝わる寺宝 受け継ぐ心』",
-      "en": "Autumn exhibition: Ishiyama-dera & Murasaki Shikibu",
+      "jp": "秋季 石山寺と紫式部展「石山寺と戦国時代」",
+      "en": "Autumn exhibition: Ishiyama-dera & Murasaki Shikibu (Warring States era)",
       "tier": "heavy",
       "status": "confirmed",
       "url": "https://www.ishiyamadera.or.jp/guide/event/shikibuten/shikibuten-2026-autumn",
-      "range": "Sep 1 - Nov 30"
+      "range": "Sep 1 - Nov 30",
+      "nt": "2026 theme: the Warring States era."
     },
     {
       "m": "Sep 2026",
@@ -38,6 +39,30 @@
       "tier": "heavy",
       "status": "projected",
       "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
+    },
+    {
+      "m": "Sep 2026",
+      "d": "19",
+      "dow": "Sat",
+      "iso": "2026-09-19",
+      "jp": "本堂内陣特別拝観（秋季）",
+      "en": "Inner-sanctuary special viewing (autumn session)",
+      "tier": "heavy",
+      "status": "confirmed",
+      "url": "https://www.ishiyamadera.or.jp/info/news/12921",
+      "range": "Sep 19 - Dec 5"
+    },
+    {
+      "m": "Sep 2026",
+      "d": "20",
+      "dow": "Sun",
+      "iso": "2026-09-20",
+      "jp": "秋季彼岸会",
+      "en": "Autumn equinox memorial service (multi-day)",
+      "tier": "note",
+      "status": "confirmed",
+      "url": "https://www.ishiyamadera.or.jp/info/news/12921",
+      "range": "Sep 20 - 26"
     },
     {
       "m": "Sep 2026",
@@ -73,9 +98,9 @@
       "jp": "紫式部法要",
       "en": "Murasaki Shikibu memorial service",
       "tier": "note",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/blog/12424",
-      "nt": "Tracks the mid-autumn moon; likely coincides with 秋月祭 in 2026."
+      "status": "confirmed",
+      "url": "https://www.ishiyamadera.or.jp/guide/event/shugetsusai",
+      "nt": "Sep 25, 10:00, main hall; coincides with the festival's first day."
     },
     {
       "m": "Oct 2026",
@@ -129,12 +154,12 @@
       "dow": "Fri",
       "iso": "2026-11-13",
       "jp": "石山寺あたら夜もみじ（ライトアップ）",
-      "en": "Autumn-leaves illumination, 17:30-21:00",
+      "en": "Autumn-leaves illumination, 17:30-21:00 (last entry 20:30)",
       "tier": "heavy",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/news/12436",
-      "range": "~Nov 13 - 30",
-      "nt": "Highest-congestion window of the six months. 2025 ran Nov 14-30; confirm 2026 in late Oct."
+      "status": "confirmed",
+      "url": "https://www.ishiyamadera.or.jp/guide/event/atarayo",
+      "range": "Nov 13 - 29",
+      "nt": "Confirmed for 2026 (Nov 13-29). Highest-congestion window of the six months."
     },
     {
       "m": "Nov 2026",
@@ -156,8 +181,9 @@
       "en": "Autumn-leaves peak bloom",
       "tier": "heavy",
       "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/info-flower/info-flower-autumn/12527",
-      "range": "~Nov 18 - 30"
+      "url": "https://www.ishiyamadera.or.jp/flower/autumn",
+      "range": "~Nov 18 - Dec 5",
+      "nt": "Temple states mid-Nov to early Dec."
     },
     {
       "m": "Nov 2026",
