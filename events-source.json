@@ -1,0 +1,33 @@
+{
+  "_comment": "Curated source for the Ishiyama-dera calendar. build.js reads this and generates data.json for the rolling 6-month window. Edit the 'dated' entries when the temple announces new dates (light-ups, exhibitions, the moon festival). The 'recurringMonthly' and 'annualFixed' entries regenerate automatically every year and rarely need changes.",
+
+  "recurringMonthly": [
+    { "kind": "nthWeekday", "n": 2, "weekday": 0, "jp": "写経会", "en": "Sutra-copying session (2nd Sunday)", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "kind": "dayOfMonth", "day": 18, "jp": "観音さまの日・門前市", "en": "Kannon day / temple-gate market (18th)", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "kind": "dayOfMonth", "day": 21, "rangeLabel": "21 · 26 · 28", "noDay": true, "jp": "弘法大師・毘沙門会・不動 月例", "en": "Recurring monthly deity observances", "tier": "note", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event", "nt": "Devotional monthly days (Kobo Daishi 21st, Bishamon 26th, Fudo 28th). No operational impact." }
+  ],
+
+  "annualFixed": [
+    { "mm": 8, "dd": 9, "jp": "千日会", "en": "Sennichi-e (one visit counts as 1,000 days)", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 12, "dd": 1, "jp": "お火焚き", "en": "Ohitaki fire ritual (38 guardian shrines)", "tier": "note", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 12, "dd": 6, "endMm": 12, "endDd": 8, "jp": "仏名会", "en": "Butsumyo-e (multi-day Buddha-name recitation service)", "tier": "block", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 12, "dd": 31, "jp": "除夜の鐘", "en": "New Year's Eve bell (late-night crowds)", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 1, "dd": 1, "endMm": 1, "endDd": 3, "jp": "初詣", "en": "New Year temple visits (peak crowds)", "tier": "block", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 1, "dd": 4, "jp": "鏡開き", "en": "Kagami-biraki (mirror-cake opening)", "tier": "note", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 1, "dd": 15, "jp": "どんど焼き", "en": "Dondo-yaki (New Year fire ritual)", "tier": "note", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" },
+    { "mm": 2, "dd": 3, "jp": "星祭大祈祷会・豆まき", "en": "Star Festival grand prayer service & bean-throwing", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event" }
+  ],
+
+  "dated": [
+    { "iso": "2026-08-23", "jp": "夏安居／涼し夏 最終日", "en": "Summer program (Natsu-ango / Suzushi-ge) final day", "tier": "heavy", "status": "confirmed", "url": "https://www.ishiyamadera.or.jp/info/news/12870" },
+    { "iso": "2026-09-01", "endIso": "2026-11-30", "range": "Sep 1 - Nov 30", "jp": "秋季 石山寺と紫式部展『伝わる寺宝 受け継ぐ心』", "en": "Autumn exhibition: Ishiyama-dera & Murasaki Shikibu", "tier": "heavy", "status": "confirmed", "url": "https://www.ishiyamadera.or.jp/guide/event/shikibuten/shikibuten-2026-autumn" },
+    { "iso": "2026-09-01", "endIso": "2026-09-27", "range": "Sep 1 - 27", "jp": "第七回 石山寺俳句大賞", "en": "7th Ishiyama-dera Haiku Award (remote submission)", "tier": "note", "status": "confirmed", "url": "https://www.ishiyamadera.or.jp/guide/event/haikutaisyo", "nt": "Postal/online submission (no on-site impact)." },
+    { "iso": "2026-09-25", "endIso": "2026-09-26", "range": "Sep 25 - 26", "jp": "石山寺 秋月祭", "en": "Autumn Moon Festival (flagship, evening special admission)", "tier": "block", "status": "confirmed", "url": "https://www.ishiyamadera.or.jp/guide/event/shugetsusai", "nt": "Tied to the mid-autumn moon (Sep 25 2026). Peak-impact weekend." },
+    { "iso": "2026-09-25", "jp": "紫式部法要", "en": "Murasaki Shikibu memorial service", "tier": "note", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/blog/12424", "nt": "Tracks the mid-autumn moon; likely coincides with 秋月祭 in 2026." },
+    { "iso": "2026-11-13", "endIso": "2026-11-30", "range": "~Nov 13 - 30", "jp": "石山寺あたら夜もみじ（ライトアップ）", "en": "Autumn-leaves illumination, 17:30-21:00", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/news/12436", "nt": "Highest-congestion window of the six months. 2025 ran Nov 14-30; confirm 2026 in late Oct." },
+    { "iso": "2026-11-18", "endIso": "2026-11-30", "range": "~Nov 18 - 30", "jp": "紅葉 見頃（ピーク）", "en": "Autumn-leaves peak bloom", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-flower/info-flower-autumn/12527" },
+    { "iso": "2026-11-21", "endIso": "2026-11-23", "range": "~Nov 21 - 23", "jp": "石山寺 紅葉の茶会", "en": "Autumn-leaves tea ceremony", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/news/12436", "nt": "2025 held Nov 23-24, reservation-based sessions." },
+    { "iso": "2027-01-17", "endIso": "2027-05-17", "range": "mid-Jan to mid-May", "jp": "内陣特別拝観", "en": "Inner-sanctuary special viewing begins", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/news/12635", "nt": "2026 ran Jan 17-May 17." },
+    { "iso": "2027-02-18", "endIso": "2027-04-12", "range": "Feb 18 to spring", "jp": "梅つくし（梅園見頃はじまり）", "en": "Plum-garden viewing begins", "tier": "heavy", "status": "projected", "url": "https://www.ishiyamadera.or.jp/info/info-event/special-event" }
+  ]
+}
