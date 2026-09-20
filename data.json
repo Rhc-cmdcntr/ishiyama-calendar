@@ -1,7 +1,7 @@
 {
-  "updated": "15 Sep 2026",
-  "windowLabel": "15 Sep 2026 to end Mar 2027",
-  "nextRefresh": "Mon 21 Sep 2026, 07:00 JST",
+  "updated": "21 Sep 2026",
+  "windowLabel": "21 Sep 2026 to end Mar 2027",
+  "nextRefresh": "Mon 28 Sep 2026, 07:00 JST",
   "events": [
     {
       "m": "Sep 2026",
@@ -28,17 +28,6 @@
       "url": "https://www.ishiyamadera.or.jp/guide/event/haikutaisyo",
       "range": "Sep 1 - 27",
       "nt": "Postal/online submission (no on-site impact)."
-    },
-    {
-      "m": "Sep 2026",
-      "d": "18",
-      "dow": "Fri",
-      "iso": "2026-09-18",
-      "jp": "観音さまの日・門前市",
-      "en": "Kannon day / temple-gate market (18th)",
-      "tier": "heavy",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
     },
     {
       "m": "Sep 2026",
@@ -430,6 +419,30 @@
       "tier": "heavy",
       "status": "projected",
       "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
+    },
+    {
+      "m": "Mar 2027",
+      "d": "18",
+      "dow": "Thu",
+      "iso": "2027-03-18",
+      "jp": "観音さまの日・門前市",
+      "en": "Kannon day / temple-gate market (18th)",
+      "tier": "heavy",
+      "status": "projected",
+      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
+    },
+    {
+      "m": "Mar 2027",
+      "d": "-",
+      "dow": "",
+      "iso": "2027-03-21",
+      "jp": "弘法大師・毘沙門会・不動 月例",
+      "en": "Recurring monthly deity observances",
+      "tier": "note",
+      "status": "projected",
+      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event",
+      "range": "21 · 26 · 28",
+      "nt": "Devotional monthly days (Kobo Daishi 21st, Bishamon 26th, Fudo 28th). No operational impact."
     }
   ]
 }
