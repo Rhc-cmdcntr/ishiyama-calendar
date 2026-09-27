@@ -1,7 +1,7 @@
 {
-  "updated": "21 Sep 2026",
-  "windowLabel": "21 Sep 2026 to end Mar 2027",
-  "nextRefresh": "Mon 28 Sep 2026, 07:00 JST",
+  "updated": "28 Sep 2026",
+  "windowLabel": "28 Sep 2026 to end Mar 2027",
+  "nextRefresh": "Mon 5 Oct 2026, 07:00 JST",
   "events": [
     {
       "m": "Sep 2026",
@@ -18,19 +18,6 @@
     },
     {
       "m": "Sep 2026",
-      "d": "1",
-      "dow": "Tue",
-      "iso": "2026-09-01",
-      "jp": "第七回 石山寺俳句大賞",
-      "en": "7th Ishiyama-dera Haiku Award (remote submission)",
-      "tier": "note",
-      "status": "confirmed",
-      "url": "https://www.ishiyamadera.or.jp/guide/event/haikutaisyo",
-      "range": "Sep 1 - 27",
-      "nt": "Postal/online submission (no on-site impact)."
-    },
-    {
-      "m": "Sep 2026",
       "d": "19",
       "dow": "Sat",
       "iso": "2026-09-19",
@@ -40,56 +27,6 @@
       "status": "confirmed",
       "url": "https://www.ishiyamadera.or.jp/info/news/12921",
       "range": "Sep 19 - Dec 5"
-    },
-    {
-      "m": "Sep 2026",
-      "d": "20",
-      "dow": "Sun",
-      "iso": "2026-09-20",
-      "jp": "秋季彼岸会",
-      "en": "Autumn equinox memorial service (multi-day)",
-      "tier": "note",
-      "status": "confirmed",
-      "url": "https://www.ishiyamadera.or.jp/info/news/12921",
-      "range": "Sep 20 - 26"
-    },
-    {
-      "m": "Sep 2026",
-      "d": "-",
-      "dow": "",
-      "iso": "2026-09-21",
-      "jp": "弘法大師・毘沙門会・不動 月例",
-      "en": "Recurring monthly deity observances",
-      "tier": "note",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event",
-      "range": "21 · 26 · 28",
-      "nt": "Devotional monthly days (Kobo Daishi 21st, Bishamon 26th, Fudo 28th). No operational impact."
-    },
-    {
-      "m": "Sep 2026",
-      "d": "25",
-      "dow": "Fri",
-      "iso": "2026-09-25",
-      "jp": "石山寺 秋月祭",
-      "en": "Autumn Moon Festival (flagship, evening special admission)",
-      "tier": "block",
-      "status": "confirmed",
-      "url": "https://www.ishiyamadera.or.jp/guide/event/shugetsusai",
-      "range": "Sep 25 - 26",
-      "nt": "Tied to the mid-autumn moon (Sep 25 2026). Peak-impact weekend."
-    },
-    {
-      "m": "Sep 2026",
-      "d": "25",
-      "dow": "Fri",
-      "iso": "2026-09-25",
-      "jp": "紫式部法要",
-      "en": "Murasaki Shikibu memorial service",
-      "tier": "note",
-      "status": "confirmed",
-      "url": "https://www.ishiyamadera.or.jp/guide/event/shugetsusai",
-      "nt": "Sep 25, 10:00, main hall; coincides with the festival's first day."
     },
     {
       "m": "Oct 2026",
