@@ -1,7 +1,7 @@
 {
-  "updated": "5 Oct 2026",
-  "windowLabel": "5 Oct 2026 to end Apr 2027",
-  "nextRefresh": "Mon 12 Oct 2026, 07:00 JST",
+  "updated": "12 Oct 2026",
+  "windowLabel": "12 Oct 2026 to end Apr 2027",
+  "nextRefresh": "Mon 19 Oct 2026, 07:00 JST",
   "events": [
     {
       "m": "Sep 2026",
@@ -27,17 +27,6 @@
       "status": "confirmed",
       "url": "https://www.ishiyamadera.or.jp/info/news/12921",
       "range": "Sep 19 - Dec 5"
-    },
-    {
-      "m": "Oct 2026",
-      "d": "11",
-      "dow": "Sun",
-      "iso": "2026-10-11",
-      "jp": "写経会",
-      "en": "Sutra-copying session (2nd Sunday)",
-      "tier": "heavy",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
     },
     {
       "m": "Oct 2026",
@@ -380,6 +369,17 @@
       "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event",
       "range": "21 · 26 · 28",
       "nt": "Devotional monthly days (Kobo Daishi 21st, Bishamon 26th, Fudo 28th). No operational impact."
+    },
+    {
+      "m": "Apr 2027",
+      "d": "11",
+      "dow": "Sun",
+      "iso": "2027-04-11",
+      "jp": "写経会",
+      "en": "Sutra-copying session (2nd Sunday)",
+      "tier": "heavy",
+      "status": "projected",
+      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
     }
   ]
 }
