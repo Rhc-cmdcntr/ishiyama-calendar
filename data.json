@@ -1,7 +1,7 @@
 {
-  "updated": "16 Nov 2026",
-  "windowLabel": "16 Nov 2026 to end May 2027",
-  "nextRefresh": "Mon 23 Nov 2026, 07:00 JST",
+  "updated": "23 Nov 2026",
+  "windowLabel": "23 Nov 2026 to end May 2027",
+  "nextRefresh": "Mon 30 Nov 2026, 07:00 JST",
   "events": [
     {
       "m": "Sep 2026",
@@ -46,17 +46,6 @@
       "d": "18",
       "dow": "Wed",
       "iso": "2026-11-18",
-      "jp": "観音さまの日・門前市",
-      "en": "Kannon day / temple-gate market (18th)",
-      "tier": "heavy",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
-    },
-    {
-      "m": "Nov 2026",
-      "d": "18",
-      "dow": "Wed",
-      "iso": "2026-11-18",
       "jp": "紅葉 見頃（ピーク）",
       "en": "Autumn-leaves peak bloom",
       "tier": "heavy",
@@ -64,19 +53,6 @@
       "url": "https://www.ishiyamadera.or.jp/flower/autumn",
       "range": "~Nov 18 - Dec 5",
       "nt": "Temple states mid-Nov to early Dec."
-    },
-    {
-      "m": "Nov 2026",
-      "d": "-",
-      "dow": "",
-      "iso": "2026-11-21",
-      "jp": "弘法大師・毘沙門会・不動 月例",
-      "en": "Recurring monthly deity observances",
-      "tier": "note",
-      "status": "projected",
-      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event",
-      "range": "21 · 26 · 28",
-      "nt": "Devotional monthly days (Kobo Daishi 21st, Bishamon 26th, Fudo 28th). No operational impact."
     },
     {
       "m": "Nov 2026",
@@ -380,6 +356,30 @@
       "tier": "heavy",
       "status": "projected",
       "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
+    },
+    {
+      "m": "May 2027",
+      "d": "18",
+      "dow": "Tue",
+      "iso": "2027-05-18",
+      "jp": "観音さまの日・門前市",
+      "en": "Kannon day / temple-gate market (18th)",
+      "tier": "heavy",
+      "status": "projected",
+      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event"
+    },
+    {
+      "m": "May 2027",
+      "d": "-",
+      "dow": "",
+      "iso": "2027-05-21",
+      "jp": "弘法大師・毘沙門会・不動 月例",
+      "en": "Recurring monthly deity observances",
+      "tier": "note",
+      "status": "projected",
+      "url": "https://www.ishiyamadera.or.jp/info/info-event/regular-event",
+      "range": "21 · 26 · 28",
+      "nt": "Devotional monthly days (Kobo Daishi 21st, Bishamon 26th, Fudo 28th). No operational impact."
     }
   ]
 }
